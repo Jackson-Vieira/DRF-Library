@@ -10,10 +10,15 @@ CHOICES_CATEGORIA = [
     ('ficção policial', 'Ficção Policial')
 ]
 
+
+
 CHOICES_SITUACAO = [
     ('aberto','Aberto'),
     ('fechado','Fechado'),
 ]
+DEFAULT_SITUACAO_INDICE = 0 # ('aberto', 'Aberto')
+
+
 
 """class Base(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -76,7 +81,7 @@ class Aluno(models.Model):
 class Emprestimo(models.Model):
     aluno = models.ForeignKey(Aluno, related_name='emprestimos', on_delete=models.CASCADE, null=False, blank=False)
     livro = models.ForeignKey(Livro, related_name='emprestimo', on_delete=models.CASCADE, null=False, blank=False)
-    situacao = models.CharField(max_length=50, choices=CHOICES_SITUACAO, default=CHOICES_SITUACAO[0])
+    situacao = models.CharField(max_length=50, choices=CHOICES_SITUACAO, default=CHOICES_SITUACAO[DEFAULT_SITUACAO_INDICE])
     data_criacao = models.DateTimeField(auto_now_add=True)
     # data_devolução = models.DateField()
     

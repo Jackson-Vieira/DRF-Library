@@ -25,5 +25,6 @@ class EmprestimoSerializer(ModelSerializer):
         model = Emprestimo
         fields = '__all__'
         extra_kwargs = {
-            'data_criacao': {'read_only':True,}
+            'data_criacao': {'read_only':True,},
+            'situacao': {'read_only':True,}
         }
