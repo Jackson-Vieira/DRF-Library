@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
-
 CHOICES_CATEGORIA = [
     ('fantasia', 'Fantasia'),
     ('ficção científica', 'Ficção científica'),
@@ -10,15 +9,11 @@ CHOICES_CATEGORIA = [
     ('ficção policial', 'Ficção Policial')
 ]
 
-
-
 CHOICES_SITUACAO = [
     ('aberto','Aberto'),
     ('fechado','Fechado'),
 ]
 DEFAULT_SITUACAO_INDICE = 0 # ('aberto', 'Aberto')
-
-
 
 """class Base(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -98,10 +93,3 @@ class Emprestimo(models.Model):
                 raise ValidationError(f"Este livro não pode ser emprestado, pois sua situação está em {self.situacao}")
         except self.DoesNotExist:
             pass
-       
-
-
-
-        
-    
-    

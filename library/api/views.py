@@ -1,11 +1,10 @@
-from rest_framework.generics import  ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
 from rest_framework.generics import get_object_or_404
 
-from library.serializers import SessaoSerializer, LivroSerializer, AlunoSerializer, EmprestimoSerializer
+from library.api.serializers import SessaoSerializer, LivroSerializer, AlunoSerializer, EmprestimoSerializer
 
-from .models import Sessao, Livro, Aluno, Emprestimo
+from library.models import Sessao, Livro, Aluno, Emprestimo
 
 class SessaoViewSet(ModelViewSet):
     queryset = Sessao.objects.all()

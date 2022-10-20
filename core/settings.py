@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'django_filters',
+    'django_extensions',
 
     # My apps
     'library',
