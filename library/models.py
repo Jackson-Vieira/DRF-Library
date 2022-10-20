@@ -85,7 +85,6 @@ class Emprestimo(models.Model):
         verbose_name_plural = 'Emprestimos'
         ordering = ['-data_criacao',]
     
-
     def clean(self):
         try:
             ultimo_emprestimo = Emprestimo.objects.filter(livro=self.livro).latest('id')
