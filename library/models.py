@@ -25,7 +25,7 @@ DEFAULT_SITUACAO_INDICE = 0 # ('aberto', 'Aberto')
 class Sessao(models.Model):
     descricao = models.TextField(max_length=50)
     localizacao = models.CharField(max_length=50)
-    category = models.CharField(
+    categoria = models.CharField(
         max_length=50,
         choices=CHOICES_CATEGORIA,
     )
@@ -36,7 +36,7 @@ class Sessao(models.Model):
     class Meta:
         verbose_name = "Sessão"
         verbose_name_plural = "Sessões"
-        ordering = ['id',]
+        ordering = ['localizacao']
 
 class Livro(models.Model):
     titulo = models.CharField(
@@ -53,7 +53,7 @@ class Livro(models.Model):
     class Meta:
         verbose_name = 'Livro'
         verbose_name_plural = 'Livros'
-        ordering = ['titulo',]
+        ordering = ['titulo']
 
 class Aluno(models.Model):
     matricula = models.CharField(

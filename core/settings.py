@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework_datatables',
     'rest_framework',
     'django_filters',
     'django_extensions',
@@ -107,13 +108,19 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
-   'DEFAULT_AUTHENTICATION_CLASSES': ( # Autenticação
-       'rest_framework.authentication.SessionAuthentication',
-   ),
- 
-   'DEFAULT_PERMISSION_CLASSES': ( # Autorização
-       'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-   ),
+    'DEFAULT_PERMISSION_CLASSES': (
+      'rest_framework.permissions.AllowAny',
+    ),
 
-    #'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination', 'PAGE_SIZE': 5, 'MAX_LIMIT':10,
+   'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework_datatables.renderers.DatatablesRenderer',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework_datatables.filters.DatatablesFilterBackend',
+    ),
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework_datatables.pagination.DatatablesPageNumberPagination',
+    'PAGE_SIZE': 50,
 }

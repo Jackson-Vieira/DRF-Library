@@ -9,5 +9,6 @@ from library.api.urls import router
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('rest_framework.urls')),
-    path('api/v1/', include(router.urls))
+    path('', include('library.urls')),
+    path('api/v1/', include(router.urls)),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

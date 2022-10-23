@@ -21,3 +21,4 @@ class AlunoViewSet(ModelViewSet):
 class EmprestimoViewSet(ModelViewSet):
     queryset = Emprestimo.objects.all()
     serializer_class = EmprestimoSerializer
+    print()
