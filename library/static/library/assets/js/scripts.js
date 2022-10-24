@@ -5,7 +5,6 @@
     /*================================
     API
     ==================================*/
-    const url_emprestimos = 'api/v1/emprestimos/?format=json'
 
     /*================================
     Preloader
@@ -143,6 +142,7 @@
     EDIT ACTION 
     ==================================*/
     let id = 0;
+    let type =  ""
     $('#dataTable tbody').on('click', 'button', function (e) {
         let data = table.row($(this).parents('tr')).data();
         let class_name = $(this).attr('class');
@@ -151,15 +151,28 @@
         // EDIT
         if ("btn btn-info" == class_name){
             // PREENCHER O FORMS 
-            $('#aluno').val(data.aluno.nome);
+            $('#aluno').val(data.aluno.matricula);
             $('#livro').val(data.livro.titulo);
             $('#situacao').val(data.situacao);
+            type = "edit";
             $('#modal-title').text(`EDIT Empréstimo - ${data.id}`);
             $("#myModal").modal();
         }
         id = data.id;
     })
-
+    $('#btn-new').on('click', function (e){
+        // REMOVE DEA
+        // RESET FORM
+        $('#aluno').val("");
+        $('#livro').val("");
+        $('#situacao').val("aberto");
+        $('#situacao').attr("disabled", "disabled");
+        type="new";
+        $('#modal-title').text(`NEW Empréstimo`);
+        $("#myModal").modal();
+    })
+        
+    
     /*================================
     GET CSRF TOKEN
     ==================================*/
@@ -187,15 +200,20 @@
     $('form').on('submit', function (e) {
         e.preventDefault();
         const $form = $(this);
-        // let type = $('#type').val();
-        let method = '';
+        let method = "";
         let url = "/api/v1/emprestimos/";
         
-        method = "PUT";
-        url = url+id+"/"
-        const data = getFormData($form);
-        const csrftoken = getCookie('csrftoken')
+        console.log(type)
+        if (type==="edit"){
+            method = "PUT";
+            url = url+id+"/"
+        }
+        else if (type==="new"){
+            method = "POST";
+        }
 
+        const data = $form.serialize();
+        const csrftoken = getCookie('csrftoken')
         console.log(data)
         $.ajax({
             type: method,

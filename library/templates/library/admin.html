@@ -98,7 +98,12 @@
                 </div>
             </div>
                     <!-- Progress Table start -->
+                    
                     <div class="col-12 mt-5">
+                        <div class="d-flex justify-content-start my-3">
+                            <button type="button" class="btn btn-primary" id="btn-new"> ADD </button>
+                        </div>
+                        
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="header-title">Empréstimos Table</h4>
@@ -140,16 +145,17 @@
                         <h5 class="modal-title" id="modal-title">{empréstimo} - {id}</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                     </div>
+                    <form role="form">
                     <div class="modal-body">
                             <div class="form-group">
                                 <label for="aluno">Aluno</label>
-                                <input type="text" name='aluno' id="aluno"  value="" class="form-control"  placeholder="aluno" disabled>
+                                <input type="text" name='aluno' id="aluno"  value="" class="form-control"  placeholder="matricula aluno">
                             </div>
                             <div class="form-group">
                                 <label for="livro">Livro</label>
-                                <input type="text" name='livro'  id="livro" value="" class="form-control" placeholder="livro" disabled>
+                                <input type="text" name='livro'  id="livro" value="" class="form-control" placeholder="id livro">
                             </div>
-                            <form role="form">
+                            
                                 <div class="form-group">
                                     <label for="situcao">Situação</label>
                                     <select class="custom-select" name="situacao" id="situacao">
@@ -162,7 +168,9 @@
                                     <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
+                                <span id="type " value="opa"></span>
                         </form>
+                        
                     </div>
                     
                 </div>

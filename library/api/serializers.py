@@ -33,8 +33,6 @@ class EmprestimoSerializer(ModelSerializer):
     id = serializers.IntegerField(read_only=True)
 
     data_criacao = serializers.SerializerMethodField()
-    aluno = AlunoSerializer(read_only=True)
-    livro = LivroSerializer(read_only=True)
 
     def get_data_criacao(self, obj):
         return obj.data_criacao.isoformat()[:10]
