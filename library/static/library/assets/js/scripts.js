@@ -112,8 +112,8 @@
 
     'columns': [
         {'data': 'id'},
-        {'data': 'aluno.nome'},
-        {'data': 'livro.titulo'},
+        {'data': 'aluno_data.nome'},
+        {'data': 'livro_data.titulo'},
         {'data': 'data_criacao'},
         {
             'data': 'situacao',
@@ -138,8 +138,9 @@
     ],
     });
 
+    
     /*================================
-    EDIT ACTION 
+    EDIT (PUT) ACTION 
     ==================================*/
     let id = 0;
     let type =  ""
@@ -151,22 +152,34 @@
         // EDIT
         if ("btn btn-info" == class_name){
             // PREENCHER O FORMS 
-            $('#aluno').val(data.aluno.matricula);
-            $('#livro').val(data.livro.titulo);
+            $('#aluno').val(data.aluno_data.matricula);
+            $('#livro').val(data.livro_data.id);
             $('#situacao').val(data.situacao);
+
+            // PROTEGER O FORMS
+            $('#aluno').attr("readonly", true);
+            $('#livro').attr("readonly", true);
+            $('#situacao').attr("readonly", false);
+
             type = "edit";
             $('#modal-title').text(`EDIT Empréstimo - ${data.id}`);
             $("#myModal").modal();
         }
         id = data.id;
     })
+
+    /*================================
+    NEW (POST) ACTION 
+    ==================================*/
     $('#btn-new').on('click', function (e){
-        // REMOVE DEA
         // RESET FORM
         $('#aluno').val("");
         $('#livro').val("");
-        $('#situacao').val("aberto");
-        $('#situacao').attr("disabled", "disabled");
+        $('#situacao').val("aberto"); // DEFAULT VALUE
+        $('#situacao').attr("readonly", true);
+        $('#aluno').attr("readonly", false);
+        $('#livro').attr("readonly", false);
+
         type="new";
         $('#modal-title').text(`NEW Empréstimo`);
         $("#myModal").modal();

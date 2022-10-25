@@ -85,10 +85,10 @@ class Emprestimo(models.Model):
         verbose_name_plural = 'Emprestimos'
         ordering = ['-data_criacao',]
     
-    def clean(self):
-        try:
-            ultimo_emprestimo = Emprestimo.objects.filter(livro=self.livro).latest('id')
-            if ultimo_emprestimo.situacao == 'aberto' and ultimo_emprestimo != self:
-                raise ValidationError(f"Este livro não pode ser emprestado, pois sua situação está em {self.situacao}")
-        except self.DoesNotExist:
-            pass
+    # def clean(self):
+    #     try:
+    #         ultimo_emprestimo = Emprestimo.objects.filter(livro=self.livro).latest('id')
+    #         if ultimo_emprestimo.situacao == 'aberto' and ultimo_emprestimo != self:
+    #             raise ValidationError(f"Este livro não pode ser emprestado, pois sua situação está em {self.situacao}")
+    #     except self.DoesNotExist:
+    #         pass
