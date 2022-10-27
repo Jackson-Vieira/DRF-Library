@@ -111,10 +111,10 @@
     },
 
     'columns': [
-        {'data': 'id'},
-        {'data': 'aluno_data.nome'},
-        {'data': 'livro_data.titulo'},
-        {'data': 'data_criacao'},
+        {'name':'id', 'data': 'id'},
+        {'name':'aluno.nome', 'data': 'aluno.nome', },
+        {'name':'livro.titulo', 'data': 'livro.titulo',},
+        {'name':'data_criacao','data': 'data_criacao'},
         {
             'data': 'situacao',
             "render": function (data, type, row, meta) {
@@ -147,19 +147,17 @@
     $('#dataTable tbody').on('click', 'button', function (e) {
         let data = table.row($(this).parents('tr')).data();
         let class_name = $(this).attr('class');
-        console.log(data)
   
         // EDIT
         if ("btn btn-info" == class_name){
             // PREENCHER O FORMS 
-            $('#aluno').val(data.aluno_data.matricula);
-            $('#livro').val(data.livro_data.id);
+            $('#aluno').val(data.aluno.matricula);
+            $('#livro').val(data.livro.id);
             $('#situacao').val(data.situacao);
 
             // PROTEGER O FORMS
             $('#aluno').attr("readonly", true);
             $('#livro').attr("readonly", true);
-            $('#situacao').attr("readonly", false);
 
             type = "edit";
             $('#modal-title').text(`EDIT Empréstimo - ${data.id}`);

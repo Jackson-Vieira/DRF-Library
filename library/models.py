@@ -64,6 +64,7 @@ class Aluno(models.Model):
         null=False)
     nome = models.CharField(max_length=50)
     email= models.EmailField()
+    emprestimos = models.ManyToManyField(Livro, through="Emprestimo", related_name="emprestimos")
 
     def __str__(self):
         return self.nome
@@ -72,18 +73,21 @@ class Aluno(models.Model):
         verbose_name = 'Aluno'
         verbose_name_plural = 'Alunos'
         ordering = ['nome',]
+    
+    
 
 class Emprestimo(models.Model):
-    aluno = models.ForeignKey(Aluno, related_name='emprestimos', on_delete=models.CASCADE, null=False, blank=False)
-    livro = models.ForeignKey(Livro, related_name='emprestimo', on_delete=models.CASCADE, null=False, blank=False)
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, null=False, blank=False)
+    livro = models.ForeignKey(Livro, on_delete=models.CASCADE, null=False, blank=False)
     situacao = models.CharField(max_length=50, choices=CHOICES_SITUACAO, default=CHOICES_SITUACAO[DEFAULT_SITUACAO_INDICE], null=False, blank=False)
     data_criacao = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
     # data_devolução = models.DateField()
     
     class Meta:
         verbose_name = 'Emprestimo'
         verbose_name_plural = 'Emprestimos'
-        ordering = ['-data_criacao',]
+        ordering = ['-data_atualizacao',]
     
     # def clean(self):
     #     try:

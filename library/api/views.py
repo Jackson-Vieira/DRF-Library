@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from rest_framework.generics import get_object_or_404
 
 from library.api.serializers import SessaoSerializer, LivroSerializer, AlunoSerializer, EmprestimoSerializer
-
 from library.models import Sessao, Livro, Aluno, Emprestimo
 
 class SessaoViewSet(ModelViewSet):
@@ -21,4 +20,3 @@ class AlunoViewSet(ModelViewSet):
 class EmprestimoViewSet(ModelViewSet):
     queryset = Emprestimo.objects.all()
     serializer_class = EmprestimoSerializer
-    print()

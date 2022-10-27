@@ -15,5 +15,5 @@ class SessaoAdmin(admin.ModelAdmin):
 
 @admin.register(Emprestimo)
 class EmprestimoAdmin(admin.ModelAdmin):
-    list_display = ['id','aluno', 'livro', 'data_criacao', 'situacao']
+    list_display = ['id','aluno', 'livro', 'data_atualizacao', 'situacao']
     list_filter = ['situacao',]

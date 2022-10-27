@@ -6,6 +6,8 @@ from rest_framework.generics import get_object_or_404
 
 from rest_framework.exceptions import ValidationError
 
+
+
 class SessaoSerializer(ModelSerializer):
     class Meta:
         model = Sessao
@@ -35,43 +37,37 @@ class AlunoSerializer(ModelSerializer):
         
 class EmprestimoSerializer(ModelSerializer):
     id = serializers.IntegerField(read_only=True)
+    
+    aluno = AlunoSerializer(read_only=True)
+    aluno_id = serializers.CharField(write_only=True)
+   
+    livro = LivroSerializer(read_only=True)
+    livro_id = serializers.IntegerField(write_only=True)
 
-    data_criacao = serializers.SerializerMethodField()
-
-    aluno_data = serializers.SerializerMethodField()
-    livro_data = serializers.SerializerMethodField()
-
-    def get_data_criacao(self, obj):
-        return obj.data_criacao.isoformat()[:10]
-
-    def get_aluno_data(self, obj):
-        aluno = obj.aluno
-        return AlunoSerializer(aluno).data
-
-    def get_livro_data(self, obj):
-        livro = obj.livro
-        return LivroSerializer(livro).data
 
     class Meta:
         model = Emprestimo
-        fields = '__all__'
-        extra_fields = ['aluno_data', 'livro_data']
+        fields = (
+            'id', 'livro_id', 'aluno_id', 'situacao', 'aluno', 'livro', 'data_criacao', 'data_atualizacao'
+        )
 
         extra_kwargs = {
             'data_criacao': {'read_only':True,},
-            'aluno_data': {'read_only':True,},
-            'livro_data': {'read_only':True,},
         }
 
+
     def validate(self, data):
-        livro = data.get('livro')
-        aluno = data.get('aluno')
-        situacao = data.get('situacao')
+        method = self.context['request'].method
+        livro_id = data.get('livro_id')
+        livro_situacao = data.get('situacao')
+
         try:
-            ultimo_emprestimo = Emprestimo.objects.filter(livro=livro)[0]
-            
-            if ultimo_emprestimo.situacao == 'aberto' and situacao == 'aberto':
-                raise ValidationError(f"Este livro não pode ser emprestado, pois sua situação está em {ultimo_emprestimo.situacao}")
+            if Emprestimo.objects.filter(livro_id=livro_id, situacao='aberto').exists() and (method != "PUT" or livro_situacao == "aberto"):
+                raise ValidationError(f"Este livro não pode ser emprestado, pois sua situação está em ABERTA!")
         except IndexError:
             pass
+
         return data
+
+    def create(self, validated_data):
+        return Emprestimo.objects.create(**validated_data)
