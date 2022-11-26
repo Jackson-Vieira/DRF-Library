@@ -3,11 +3,11 @@ from .models import Aluno, Livro, Sessao, Emprestimo
 
 @admin.register(Livro)
 class LivroAdmin(admin.ModelAdmin):
-    pass
+   list_display = ['id','titulo',]
 
 @admin.register(Aluno)
 class AlunoAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['matricula','nome',]
 
 @admin.register(Sessao)
 class SessaoAdmin(admin.ModelAdmin):

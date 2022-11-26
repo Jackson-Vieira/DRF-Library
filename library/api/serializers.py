@@ -15,7 +15,7 @@ class SessaoSerializer(ModelSerializer):
             'descricao',
             'localizacao',
             'categoria'
-        ) #
+        )
 
 class LivroSerializer(ModelSerializer):
     class Meta:
@@ -48,7 +48,7 @@ class EmprestimoSerializer(ModelSerializer):
     class Meta:
         model = Emprestimo
         fields = (
-            'id', 'livro_id', 'aluno_id', 'situacao', 'aluno', 'livro', 'data_criacao', 'data_atualizacao'
+            'id', 'livro_id', 'aluno_id',  'aluno', 'livro', 'data_criacao', 'data_atualizacao', 'situacao'
         )
 
         extra_kwargs = {
@@ -56,6 +56,7 @@ class EmprestimoSerializer(ModelSerializer):
         }
 
 
+    # BAD CODE
     def validate(self, data):
         method = self.context['request'].method
         livro_id = data.get('livro_id')
@@ -68,6 +69,3 @@ class EmprestimoSerializer(ModelSerializer):
             pass
 
         return data
-
-    def create(self, validated_data):
-        return Emprestimo.objects.create(**validated_data)

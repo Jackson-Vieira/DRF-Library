@@ -25,8 +25,11 @@ INSTALLED_APPS = [
 
     'rest_framework_datatables',
     'rest_framework',
+   
     'django_filters',
     'django_extensions',
+
+    'drf_yasg',
 
     # My apps
     'library',

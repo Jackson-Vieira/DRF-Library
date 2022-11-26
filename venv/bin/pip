@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/hax/Documents/APIs/#1 Library/venv/bin/python3" "$0" "$@"
-' '''
+#!/home/hax/Utils/github-projects/DJANGO/APIS/library/venv/bin/python3.10
 # -*- coding: utf-8 -*-
 import re
 import sys

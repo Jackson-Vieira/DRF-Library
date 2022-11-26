@@ -82,7 +82,6 @@ class Emprestimo(models.Model):
     situacao = models.CharField(max_length=50, choices=CHOICES_SITUACAO, default=CHOICES_SITUACAO[DEFAULT_SITUACAO_INDICE], null=False, blank=False)
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
-    # data_devolução = models.DateField()
     
     class Meta:
         verbose_name = 'Emprestimo'
