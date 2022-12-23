@@ -32,20 +32,18 @@
 
     <!-- modernizr css -->
     <script src="{% static 'library/assets/js/vendor/modernizr-2.8.3.min.js' %}"></script>
-
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
+     <!-- preloader area start -->
     <div id="preloader">
         <div class="loader"></div>
     </div>
     <!-- preloader area end -->
+
     <!-- page container area start -->
     <div class="page-container">
+
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
             <div class="sidebar-header">
@@ -72,6 +70,7 @@
 
         <!-- main content area start -->
         <div class="main-content">
+
             <!-- header area start -->
             <div class="header-area">
                 <div class="row align-items-center">
@@ -97,47 +96,46 @@
                     </div>
                 </div>
             </div>
-                    <!-- Progress Table start -->
-                    
-                    <div class="col-12 mt-5">
-                        <div class="d-flex justify-content-start my-3">
-                            <button type="button" class="btn btn-primary" id="btn-new"> ADD </button>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title">Empréstimos Table</h4>
-                                <div class="single-table">
-                                    <!-- class="table-responsive" -->
-                                    <div class="table-responsive-sm">
-                                        <table class="table table-hover progress-table " id="dataTable">
-                                            <thead class="text-uppercase">
-                                                <tr>
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">Aluno</th>
-                                                    <th scope="col">Livro</th>
-                                                    <th scope="col">Data criação</th>
-                                                    <th scope="col">Situação</th>
-                                                    <th scope="col">Ações</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="t-body">
+             <!-- page title area end -->
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+            <!-- Progress Table start -->
+            <div class="col-12 mt-5">
+                <div class="d-flex justify-content-start my-3">
+                    <button type="button" class="btn btn-primary" id="btn-new"> ADD </button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Empréstimos Table</h4>
+                        <div class="single-table">
+                            <!-- class="table-responsive" -->
+                            <div class="table-responsive-sm">
+                                <table class="table table-hover progress-table " id="dataTable">
+                                    <thead class="text-uppercase">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Aluno</th>
+                                            <th scope="col">Livro</th>
+                                            <th scope="col">Data criação</th>
+                                            <th scope="col">Situação</th>
+                                            <th scope="col">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="t-body">
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!-- Progress Table end -->
                 </div>
             </div>
-        </div>
-        <!-- main content area end -->
-        
+            <!-- Progress Table end -->
 
-        <!-- Modal EDIT start -->
+        </div>
+         <!-- main content area end -->
+
+        <!-- Modal Create/Edit start -->
         <div class="modal fade" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -148,12 +146,12 @@
                     <form role="form">
                     <div class="modal-body">
                             <div class="form-group">
-                                <label for="aluno">Aluno</label>
-                                <input type="text" name='aluno_id' id="aluno"  value="" class="form-control"  placeholder="matricula aluno">
+                                <label for="aluno">Matrícula Aluno</label>
+                                <input type="text" name='aluno_id' id="aluno"  value="" class="form-control"  placeholder="20211094010018">
                             </div>
                             <div class="form-group">
-                                <label for="livro">Livro</label>
-                                <input type="text" name='livro_id'  id="livro" value="" class="form-control" placeholder="id livro">
+                                <label for="livro">Livro ID</label>
+                                <input type="text" name='livro_id'  id="livro" value="" class="form-control" placeholder="2">
                             </div>
                             
                                 <div class="form-group">
@@ -168,7 +166,7 @@
                                     <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
-                                <span id="type " value="opa"></span>
+                                <span id="type "></span>
                         </form>
                         
                     </div>
@@ -176,16 +174,18 @@
                 </div>
             </div>
         </div>
-        <!-- basic modal end -->
+        <!-- Modal Create/Edit end -->
 
-        <!-- footer area start-->
-        <footer>
-            <div class="footer-area">
-                <p>© Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
-            </div>
-        </footer>
-        <!-- footer area end-->
     </div>
+    <!-- main content area end -->
+        
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>© Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+        </div>
+    </footer>
+    <!-- footer area end-->
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -203,9 +203,6 @@
     <!-- others plugins -->
     <script src="{% static 'library/assets/js/plugins.js' %}"></script>
     <script src="{% static 'library/assets/js/scripts.js' %}"></script>
-    <script>
-        
-    </script>
-</body>
 
+</body>
 </html>

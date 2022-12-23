@@ -30,7 +30,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/hax/Utils/github-projects/DJANGO/APIS/library/venv"
+set -gx VIRTUAL_ENV "/home/hax/Dev/github-projects/django/drf-library/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

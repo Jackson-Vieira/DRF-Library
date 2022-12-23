@@ -1,4 +1,4 @@
-#!/home/hax/Utils/github-projects/DJANGO/APIS/library/venv/bin/python3.10
+#!/home/hax/Dev/github-projects/django/drf-library/venv/bin/python3.10
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

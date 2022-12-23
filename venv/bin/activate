@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/hax/Utils/github-projects/DJANGO/APIS/library/venv"
+VIRTUAL_ENV="/home/hax/Dev/github-projects/django/drf-library/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
